@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 const buttonStyle = {
     padding: '10px',
@@ -30,6 +31,7 @@ const Quiz = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [answers, setAnswers] = useState(Array(quizQuestions.length).fill(null)); // Track answers
     const [isQuizFinished, setIsQuizFinished] = useState(false);
+    const navigate = useNavigate(); // Initialize useNavigate for navigation
 
     const handleAnswerClick = (answer) => {
         const isCorrect = answer === quizQuestions[currentQuestionIndex].answer;
@@ -90,8 +92,19 @@ const Quiz = () => {
         }
     }, [isQuizFinished, answers]); // Run effect when quiz finishes
 
+    const handleGoToRoadmap = () => {
+        navigate('/roadmap'); // Navigate to the roadmap page
+    };
+
     if (isQuizFinished) {
-        return <h2>Quiz Finished! Your answers have been submitted.</h2>;
+        return (
+            <div>
+                <h2>Quiz Finished! Your answers have been submitted.</h2>
+                <button style={buttonStyle} onClick={handleGoToRoadmap}>
+                    Go To Roadmap
+                </button>
+            </div>
+        );
     }
 
     return (

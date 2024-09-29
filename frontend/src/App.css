@@ -49,7 +49,7 @@ h1 {
 h2 {
   font-family: "Orbitron", sans-serif;
   font-size: 2rem;
-  color: #ff8c00; /* Change to a vibrant orange for the main text */
+  color: #0CEAD9;
   text-shadow: 0 0 10px rgba(255, 140, 0, 0.7),
     /* Lighter orange shadow */ 0 0 20px rgba(0, 0, 128, 0.5),
     /* Dark blue shadow for depth */ 0 0 30px rgba(255, 255, 255, 0.4),
@@ -58,6 +58,33 @@ h2 {
   bottom: 20px;
   left: 10px;
   z-index: 10;
+}
+
+.slogan {
+  font-family: "Orbitron", sans-serif;
+  font-size: 5rem;
+  color: #ff8c00; /* Change to a vibrant orange for the main text */
+  margin-top: 100px; /* Keep the existing margin */
+  text-align: center; /* Center the text */
+  text-transform: uppercase; /* Make the text uppercase */
+  letter-spacing: 2px; /* Space out the letters */
+  animation: pulse 1.5s infinite; /* Add a pulsing animation */
+  text-shadow: 0 0 20px rgba(255, 204, 0, 0.8), /* Glow effect */
+               0 0 30px rgba(0, 128, 255, 0.5), 
+               0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Image Parallax Container */
@@ -121,6 +148,10 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 30px;
+}
+
+.cta-button:hover {
+  background-color: #0CEAD9;
 }
 
 .benefits-section {
@@ -239,8 +270,9 @@ h2 {
 
 .container {
   padding: 20px;
-  max-width: 1200px;
   margin: 0 auto;
+  width: calc(100vw - <size>); /* or a specific width */
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
 }
 
 .header {

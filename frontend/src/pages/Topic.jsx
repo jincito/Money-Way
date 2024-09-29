@@ -16,7 +16,7 @@ const Topic = ({ topicTitle, units }) => {
           cursor: 'pointer', 
           color: '#ff6600', 
           margin: '0 0 10px 0',
-          fontSize: '1.5rem' // Change the font size here
+          fontSize: '1.5rem', // Change the font size here
         }}
       >
         {topicTitle} {isExpanded ? '▲' : '▼'}
@@ -24,7 +24,12 @@ const Topic = ({ topicTitle, units }) => {
       {isExpanded && (
         <div style={{ paddingLeft: '10px' }}>
           {units.map((unit, index) => (
-            <Unit key={index} unitTitle={unit.unitTitle} description={unit.description} />
+            <Unit 
+              key={index} 
+              unitTitle={unit.unitTitle} 
+              description={unit.description} 
+              detailedDescription={unit.detailedDescription} // Pass the new prop
+            />
           ))}
         </div>
       )}

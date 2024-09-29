@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Background from "./components/Background.js";
 import rocketImage from "./assets/child-riding-rocket-ship-removebg.png";
@@ -7,8 +7,9 @@ import Modal from "./components/Modal.jsx";
 import Quiz from "./pages/Quiz";
 import CreateAccount from "./components/CreateAccount.jsx";
 import RoadmapsModal from "./components/RoadmapModal.jsx";
-import Navbar from './components/Navbar';
-import Login from './components/Login';
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import Typewriter from "./components/Typewriter";
 
 const options = [
   {
@@ -35,8 +36,6 @@ function App() {
   const [showCreateAccount, setShowCreateAccount] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [isRoadmapOpen, setIsRoadmapOpen] = useState("");
 
   const handleRoadmapClick = () => {
@@ -44,9 +43,6 @@ function App() {
   };
   const handleCloseRoadmap = () => {
     setIsRoadmapOpen(false);
-  }
-  const handleCreateAccountClick = () => {
-    setShowCreateAccount(true); // Show Create Account modal
   };
 
   const closeCreateAccount = () => {
@@ -96,7 +92,7 @@ function App() {
   };
 
   return (
-    <div className="Container">
+    <div className="container">
       <Background
         starFieldWidth={window.innerWidth}
         starFieldHeight={window.innerHeight}
@@ -115,17 +111,16 @@ function App() {
           }}
         />
         <div className="parallax-text">MONEY WAY</div>
+        <Typewriter></Typewriter>
       </div>
 
       {/* Header Section */}
       <header>
-        <h1>Master Your Money the Fun Way</h1>
+        <h1 className="slogan">Master Your Money the Fun Way</h1>
         <h2>Get personalized financial advice tailored to you.</h2>
       </header>
-        
-        {/* Header Section */}
-        <RoadmapsModal show={isRoadmapOpen} handleClose={handleCloseRoadmap} />
 
+      <RoadmapsModal show={isRoadmapOpen} handleClose={handleCloseRoadmap} />
 
       {/*call to action */}
       <div className="App">
@@ -133,7 +128,7 @@ function App() {
           Take the Quiz Now
         </button>
       </div>
-      
+
       {/* Benefits Section */}
       <section className="benefits-section">
         <ul>
@@ -188,7 +183,9 @@ function App() {
             <button
               key={index}
               onClick={() => setCurrentOption(index)}
-              className={`option-button ${currentOption === index ? "active" : ""}`}
+              className={`option-button ${
+                currentOption === index ? "active" : ""
+              }`}
             >
               {option.title}
             </button>
@@ -196,18 +193,25 @@ function App() {
         </div>
 
         <div className="sliding-info">
-          <button onClick={handlePrevious} className="arrow-button">←</button>
+          <button onClick={handlePrevious} className="arrow-button">
+            ←
+          </button>
 
           <div className="info-content">
             <h3 className="option-title">{options[currentOption].title}</h3>
             <p className="option-info">{options[currentOption].info}</p>
           </div>
 
-          <button onClick={handleNext} className="arrow-button">→</button>
+          <button onClick={handleNext} className="arrow-button">
+            →
+          </button>
         </div>
       </section>
 
-      <Navbar toggleLogin={toggleLogin} handleRoadmapClick={handleRoadmapClick} />
+      <Navbar
+        toggleLogin={toggleLogin}
+        handleRoadmapClick={handleRoadmapClick}
+      />
 
       {isLoginOpen && (
         <Modal show={isLoginOpen} handleClose={toggleLogin}>
@@ -227,7 +231,7 @@ function App() {
 
       <Routes>
         <Route path="/createaccount" element={<CreateAccount />} />
-        <Route path="/" element={<div>Homepage content...</div>} /> {/* Placeholder for homepage */}
+        <Route path="/" element={<div>Homepage content...</div>} />{" "}
       </Routes>
     </div>
   );

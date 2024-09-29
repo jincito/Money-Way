@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Unit = ({ unitTitle, description }) => {
+const Unit = ({ unitTitle, description, detailedDescription }) => {
   const [isExpanded, setIsExpanded] = useState(false); // For unit description expansion
 
   const toggleExpand = () => {
@@ -20,7 +20,10 @@ const Unit = ({ unitTitle, description }) => {
         {unitTitle} {isExpanded ? "▲" : "▼"}
       </h3>
       {isExpanded && (
-        <p style={{ paddingLeft: "10px", color: "#cccccc" }}>{description}</p> // Show description when expanded
+        <div style={{ paddingLeft: "10px", color: "#cccccc" }}>
+          <p>{description}</p> {/* Show description when expanded */}
+          <p>{detailedDescription}</p> {/* Show detailed description */}
+        </div>
       )}
     </div>
   );

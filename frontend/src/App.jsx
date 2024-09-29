@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Background from "./components/Background.js";
 import rocketImage from "./assets/child-riding-rocket-ship-removebg.png";
-import axios from "axios";
 import Modal from "./components/Modal.jsx";
-import Quiz from "./pages/Quiz.jsx";
+import Quiz from "./pages/Quiz";
 import CreateAccount from "./components/CreateAccount.jsx";
+import RoadmapsModal from "./components/RoadmapModal.jsx";
+import Navbar from './components/Navbar';
+import Login from './components/Login';
 
 const options = [
   {
@@ -33,18 +35,34 @@ function App() {
   const [showCreateAccount, setShowCreateAccount] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isRoadmapOpen, setIsRoadmapOpen] = useState("");
 
+  const handleRoadmapClick = () => {
+    setIsRoadmapOpen(true);
+  };
+  const handleCloseRoadmap = () => {
+    setIsRoadmapOpen(false);
+  }
   const handleCreateAccountClick = () => {
     setShowCreateAccount(true); // Show Create Account modal
   };
+
   const closeCreateAccount = () => {
     setShowCreateAccount(false); // Close Create Account modal
   };
+
   const handleQuizClick = () => {
-    setIsQuizOpen(true);
+    setIsQuizOpen(true); // Open quiz modal
   };
+
   const handleCloseQuiz = () => {
-    setIsQuizOpen(false);
+    setIsQuizOpen(false); // Close quiz modal
+  };
+
+  const toggleLogin = () => {
+    setIsLoginOpen(!isLoginOpen); // Toggle login modal
   };
 
   useEffect(() => {
@@ -58,10 +76,6 @@ function App() {
       window.removeEventListener("scroll", handleScroll); // Clean up on unmount
     };
   }, []);
-
-  const toggleLogin = () => {
-    setIsLoginOpen(!isLoginOpen);
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -90,7 +104,7 @@ function App() {
         speed={5}
       />
 
-      {/* Image Section with Diagonal Parallax Effect */}
+      {/* Image Section */}
       <div className="image-container">
         <img
           src={rocketImage}
@@ -108,18 +122,18 @@ function App() {
         <h1>Master Your Money the Fun Way</h1>
         <h2>Get personalized financial advice tailored to you.</h2>
       </header>
+        
+        {/* Header Section */}
+        <RoadmapsModal show={isRoadmapOpen} handleClose={handleCloseRoadmap} />
 
-      {/* Call to Action */}
+
+      {/*call to action */}
       <div className="App">
         <button className="cta-button" onClick={handleQuizClick}>
           Take the Quiz Now
         </button>
       </div>
-
-      <Routes>
-        <Route path="./pages/createaccount" element={<CreateAccount />} />
-      </Routes>
-
+      
       {/* Benefits Section */}
       <section className="benefits-section">
         <ul>
@@ -169,72 +183,52 @@ function App() {
 
       {/* Four options section */}
       <section className="options-section">
-        {/* Buttons for Credit, Taxes, Budgeting, Savings */}
         <div className="options-buttons">
           {options.map((option, index) => (
             <button
               key={index}
               onClick={() => setCurrentOption(index)}
-              className={`option-button ${
-                currentOption === index ? "active" : ""
-              }`}
+              className={`option-button ${currentOption === index ? "active" : ""}`}
             >
               {option.title}
             </button>
           ))}
         </div>
 
-        {/* Sliding info with arrows on side */}
         <div className="sliding-info">
-          <button onClick={handlePrevious} className="arrow-button">
-            ←
-          </button>
+          <button onClick={handlePrevious} className="arrow-button">←</button>
 
           <div className="info-content">
             <h3 className="option-title">{options[currentOption].title}</h3>
             <p className="option-info">{options[currentOption].info}</p>
           </div>
 
-          <button onClick={handleNext} className="arrow-button">
-            →
-          </button>
+          <button onClick={handleNext} className="arrow-button">→</button>
         </div>
       </section>
 
-      <div className="App">
-        {/* Header section with buttons */}
-        <div className="navbar">
-          <button onClick={() => alert("Go to Roadmap")}>Roadmap</button>
-          <div>
-            <button onClick={toggleLogin}>Login</button>
-          </div>
-        </div>
+      <Navbar toggleLogin={toggleLogin} handleRoadmapClick={handleRoadmapClick} />
 
-        {/* The login modal */}
-        {isLoginOpen && (
-          <div className="login-tab">
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button onClick={() => alert("Logging in...")}>Login</button>
-            <button onClick={handleCreateAccountClick}>
-              Create Account
-            </button>{" "}
-            {/* When clicked, it takes you to the create account page */}
-          </div>
-        )}
-
-        {/* Create Account Modal */}
-        {showCreateAccount && (
-          <Modal show={showCreateAccount} handleClose={closeCreateAccount}>
-            <CreateAccount closeModal={closeCreateAccount} />
-          </Modal>
-        )}
-
-        {/* The quiz modal */}
-        <Modal show={isQuizOpen} handleClose={handleCloseQuiz}>
-          <Quiz />
+      {isLoginOpen && (
+        <Modal show={isLoginOpen} handleClose={toggleLogin}>
+          <Login closeModal={toggleLogin} />
         </Modal>
-      </div>
+      )}
+
+      {showCreateAccount && (
+        <Modal show={showCreateAccount} handleClose={closeCreateAccount}>
+          <CreateAccount closeModal={closeCreateAccount} />
+        </Modal>
+      )}
+
+      <Modal show={isQuizOpen} handleClose={handleCloseQuiz}>
+        <Quiz />
+      </Modal>
+
+      <Routes>
+        <Route path="/createaccount" element={<CreateAccount />} />
+        <Route path="/" element={<div>Homepage content...</div>} /> {/* Placeholder for homepage */}
+      </Routes>
     </div>
   );
 }

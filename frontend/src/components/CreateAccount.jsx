@@ -1,6 +1,5 @@
-// ./components/CreateAccount.jsx
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../api'; // Use the centralized API configuration
 
 const CreateAccount = ({ closeModal }) => {
   const [username, setUsername] = useState('');
@@ -21,7 +20,8 @@ const CreateAccount = ({ closeModal }) => {
     };
 
     try {
-      const response = await axios.post('http://localhost:8082/user/createUser', userData);
+      // Use the centralized API instance instead of axios.post
+      const response = await API.post('/user/createUser', userData);
       alert('Account successfully created!');
       console.log(response.data);
       closeModal(); // Close the modal after successful account creation
@@ -81,7 +81,6 @@ const CreateAccount = ({ closeModal }) => {
           />
         </div>
         <button type="submit">Create Account</button>
-        <button type="button" onClick={closeModal}>Cancel</button> {/* Close the modal without action */}
       </form>
     </div>
   );

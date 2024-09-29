@@ -1,0 +1,33 @@
+.star-field {
+width: 100vw; /* Use viewport width */
+height: 100vh; /* Use viewport height */
+position: fixed; /* Use fixed positioning for the star field */
+top: 0;
+left: 0;
+overflow: hidden;
+pointer-events: none; /* Optional: prevent interaction */
+}
+
+.star {
+width: 2px;
+height: 2px;
+position: absolute;
+background: white;
+border-radius: 50%;
+box-shadow: 0 0 15px white;
+}
+
+.star.red {
+background: #ff4444;
+box-shadow: 0 0 15px #ff4444;
+}
+
+.star.yellow {
+background: #bfbb40;
+box-shadow: 0 0 15px #bfbb40;
+}
+
+.star.blue {
+background: #4444ff;
+box-shadow: 0 0 15px #4444ff;
+}

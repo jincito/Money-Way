@@ -1,0 +1,435 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+/* Styling the logo */
+.logo {
+  width: 150px; /* Adjust the size of your logo */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 20px auto; /* Center the logo */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+body {
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Ensure the body takes full height */
+  background: linear-gradient(
+    to bottom,
+    #000428,
+    #000000
+  ); /* Gradient from blue to black */
+  font-family: lucida console, monspace;
+  text-align: center;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 5rem;
+  color: white;
+  margin-top: 100px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 3rem;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Image Parallax Container */
+.image-container {
+  position: relative;
+  margin-bottom: 40px;
+  text-align: center;
+  height: 100vh; /* Full height of viewport */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 60%;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-container p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.parallax-image {
+  position: absolute; /* Position the image */
+  bottom: 0; /* Start from bottom */
+  left: 0; /* Start from left */
+  width: 150px; /* Adjust size as needed */
+  transition: transform 0.1s ease-out; /* Smooth transition for scrolling */
+  z-index: 10; /* Ensure it appears above background elements */
+}
+
+.parallax-text {
+  font-family: "Orbitron", sans-serif;
+  font-size: 55px;
+  color: #ff8c00; /* Change to a vibrant orange for the main text */
+  text-shadow: 0 0 10px rgba(255, 140, 0, 0.7),
+    /* Lighter orange shadow */ 0 0 20px rgba(0, 0, 128, 0.5),
+    /* Dark blue shadow for depth */ 0 0 30px rgba(0, 0, 128, 0.4),
+    0 0 40px rgba(0, 0, 128, 0.3), 0 0 50px rgba(0, 0, 128, 0.2);
+  position: relative;
+  bottom: 20px;
+  left: 10px;
+  z-index: 10;
+}
+
+.cta-button {
+  background-color: #ff6600;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.benefits-section {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+.benefits-section ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+}
+.benefits-section li {
+  flex: 1;
+  margin: 0 10px;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.benefits-section strong {
+  font-size: 1.7rem;
+  display: block;
+  margin-bottom: 10px;
+  color: #ffcc00; /* Optional: highlight the title */
+}
+
+.testimonials-section {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.testimonial {
+  font-style: italic;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.option-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.option-info {
+  font-size: 10rem;
+  text-align: justify;
+}
+.options-section {
+  padding: 20px;
+  text-align: justify;
+  margin-top: 30px;
+}
+
+.options-content h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.options-content p {
+  font-size: 16px;
+  text-align: justify;
+}
+
+.options-navigation {
+  margin: 20px 0;
+}
+
+.arrow-button {
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.options-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.option-button {
+  padding: 20px;
+  background-color: #ff6600;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.option-button.active {
+  background-color: #cc5200;
+  font-weight: bold;
+}
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  gap: 10px;
+  padding: 20px;
+  background-color: transparent;
+  z-index: 1000;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.content {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.sliding-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.arrow-button {
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.info-content {
+  text-align: center;
+  color: white;
+}
+
+.info-content h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: while;
+}
+
+.info-content p {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end; /* Aligns buttons to the right */
+  padding: 10px 20px; /* Reduced padding for a smaller navbar */
+  background-color: #000022; /* Dark background for the navbar */
+  position: fixed; /* Keeps the navbar fixed at the top */
+  top: 0;
+  right: 0;
+  width: 100%; /* Ensures the navbar spans the full width of the page */
+  z-index: 1000; /* Ensures navbar stays on top of other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow for better separation */
+}
+
+.navbar button {
+  margin-left: 10px; /* Smaller gap between buttons */
+  padding: 8px 16px; /* Smaller buttons */
+  background-color: #ff6600; /* Button color */
+  color: #fff;
+  border: none;
+  border-radius: 3px; /* Smaller border radius */
+  cursor: pointer;
+  font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+.navbar button:hover {
+  background-color: #cc5200; /* Darker shade on hover */
+}
+
+.main-content {
+  margin-top: 60px;
+}
+
+.login-tab {
+  position: absolute;
+  top: 60px; /* Just below the navbar */
+  right: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  background-color: #ffd1a9;
+}
+
+.login-tab input {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: #ff6600;
+  gap: 30px;
+}
+
+.login-buttons button {
+  padding: 4px 8px;
+  font-size: 0.5rem;
+  cursor: pointer;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  gap: 30px;
+}
+
+.login-buttons button:hover {
+  background-color: #cc5200;
+}
+
+.login-buttons button:last-child {
+  margin-right: 0;
+}
+
+.quiz-container {
+  margin: 20px;
+  text-align: center;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adds space between the two options */
+  margin-top: 20px;
+}
+
+.options button {
+  padding: 10px 20px;
+  background-color: #ffd1a9; /* Pastel orange */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.options button:hover {
+  background-color: #cc5200; /* Darker color on hover */
+}
+
+h3 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 1.7rem;
+}
+
+p {
+  font-size: 1.6rem;
+  color: white;
+  text-align: center;
+}

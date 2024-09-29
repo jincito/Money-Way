@@ -10,20 +10,19 @@ public class UserResponse {
     @Column(name = "user_response_id")
     private int userResponseID;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User userID;
+    @Column(name = "user_id", nullable = false)
+    private int userID;
 
     @Column(name = "answer")
     private boolean answer;
 
-    public UserResponse(int userResponseID, User userID, boolean answer) {
+    public UserResponse(int userResponseID, int userID, boolean answer) {
         this.userResponseID = userResponseID;
         this.userID = userID;
         this.answer = answer;
     }
 
-    public UserResponse(User userID, boolean answer) {
+    public UserResponse(int userID, boolean answer) {
         this.userID = userID;
         this.answer = answer;
     }
@@ -40,11 +39,11 @@ public class UserResponse {
         this.userResponseID = userResponseID;
     }
 
-    public User getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(User userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

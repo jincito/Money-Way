@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+import java.util.Optional;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/user")
@@ -13,6 +16,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/createUser")
     public ResponseEntity<User> createUser(@RequestBody User user)
@@ -31,17 +37,12 @@ public class UserController {
     public ResponseEntity<User> deleteUser(@RequestBody User user){
         return service.deleteUser(user.getUserID());
     }
-}
 
-////    @PostMapping("/login")
-////    public ResponseEntity<String> login(@RequestParam String userID, @RequestParam String password) {
-////        Optional<User> user = userService.findUserByUserIDAndPassword(userID, password);
-////
-////        if (user.isPresent()) {
-////            return ResponseEntity.ok("Login successful!"); // Or return user details if needed
-////        } else {
-////            return ResponseEntity.status(401).body("Invalid userID or password."); // 401 Unauthorized
-////        }
-//    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> login(@RequestBody User user) {
+        return service.validateUser(user.getUsername(), user.getPassword());
+    }
+}
 
 

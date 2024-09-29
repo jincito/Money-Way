@@ -1,5 +1,7 @@
 package Shellhacks.example.Shellhacks.Model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,6 +24,12 @@ public class User {
     @Column(name = "status")
     private String status;
 
+    @JsonCreator
+    public User(@JsonProperty("userID") int userID)
+     {
+        this.userID = userID;
+    }
+
     public User(int userID, String username, String email, String password, int age, String stateOfResidence, String status) {
         this.userID = userID;
         this.username = username;
@@ -43,6 +51,11 @@ public class User {
         this.age = age;
         this.stateOfResidence = stateOfResidence;
         this.status = status;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public int getUserID() {

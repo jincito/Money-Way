@@ -15,7 +15,7 @@ public class UserResponseService {
     @Autowired
     UserResponseRepo repo;
 
-    public ResponseEntity<UserResponse> createUserResponse(User userID, boolean answer){
+    public ResponseEntity<UserResponse> createUserResponse(int userID, boolean answer){
         UserResponse userResponse = new UserResponse(userID, answer);
         // repo method
         repo.save(userResponse);
@@ -24,18 +24,12 @@ public class UserResponseService {
         return ResponseEntity.status(201).header("Success", "The user response has been created").body(userResponse);
     }
 
-    public ResponseEntity<UserResponse> updateUser(int userResponseID, User userID, boolean answer){
+    public ResponseEntity<UserResponse> updateUser(int userResponseID, int userID, boolean answer){
         UserResponse userResponse = new UserResponse(userResponseID, userID, answer);
         // repo method
 
         return ResponseEntity.status(200).header("Success", "The user response has been updated").body(userResponse);
     }
-/*
-    public ResponseEntity<UserResponse> getUserResponse(int userID){
-        UserResponse userResponse = repo.findByUserID(userID).orElse(null);
-        return ResponseEntity.status(200).header("Success", "The user response has been retrieved").body(userResponse);
-    }
-*/
 
     public ResponseEntity<UserResponse> getUserResponse(int userResponseId) {
         Optional<UserResponse> userResponse = repo.findByUserResponseID(userResponseId);

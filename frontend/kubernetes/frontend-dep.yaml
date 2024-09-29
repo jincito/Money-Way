@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-shellhacks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-shellhacks
+  template:
+    metadata:
+      labels:
+        app: frontend-shellhacks
+    spec:
+      containers:
+      - name: frontend
+        image: frontend-shellhacks:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import API from '../api'; // Use the centralized API configuration
+import React, { useState } from "react";
+import API from "../api"; // Use the centralized API configuration
 
 const Login = ({ closeModal }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,14 +15,18 @@ const Login = ({ closeModal }) => {
 
     try {
       // Use the centralized API instance instead of axios.post
-      const response = await API.post('/user/login', loginData);
-      alert('Login successful!');
+      const response = await API.post("/user/login", loginData);
+      alert("Login successful!");
       console.log(response.data);
       // Handle successful login (store token, redirect, etc.)
       closeModal(); // Close the modal after successful login
     } catch (error) {
-      console.error('Error during login', error);
-      alert('Login failed. Please check your credentials.');
+      console.error("Error during login", error);
+      alert(
+        `Login failed: ${
+          error.response?.data?.message || "Please check your credentials."
+        }`
+      );
     }
   };
 
@@ -31,21 +35,21 @@ const Login = ({ closeModal }) => {
       <h2>Login to Your Account</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <input 
+          <input
             type="text"
-            placeholder='Username'
+            placeholder="Username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} 
-            required 
+            onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
         <div>
-          <input 
+          <input
             type="password"
-            placeholder='Password'
+            placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} 
-            required 
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Login</button>

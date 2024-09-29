@@ -58,6 +58,7 @@ const topics = [
 ];
 
 const RoadmapModal = ({ show, handleClose }) => {
+
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (show) {

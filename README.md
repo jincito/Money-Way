@@ -44,9 +44,9 @@ To set up the **Money Way** project locally, follow these steps:
 
 4. Start the development server:
 
-  `npm start`
-  
-  `Open your browser and visit http://localhost:3000 to view the application.`
+   `npm start`
+
+   `Open your browser and visit http://localhost:3000 to view the application.`
 
 ## Usage
 Take the Quiz: Click on the "Take the Quiz Now" button to start assessing your financial knowledge.

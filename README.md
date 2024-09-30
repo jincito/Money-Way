@@ -38,9 +38,11 @@ To set up the **Money Way** project locally, follow these steps:
 
 2. Install dependencies:
 
-  `npm install`
+   `cd frontend`
 
-3. Start the development server:
+   `npm install`
+
+4. Start the development server:
 
   `npm start`
   

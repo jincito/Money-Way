@@ -96,7 +96,7 @@ function App() {
       <Background
         starFieldWidth={window.innerWidth}
         starFieldHeight={window.innerHeight}
-        noOfStars={500}
+        noOfStars={400}
         speed={5}
       />
 
